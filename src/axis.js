@@ -4,8 +4,7 @@ import identity from "./identity";
 var top = 1,
     right = 2,
     bottom = 3,
-    left = 4,
-    epsilon = 1e-6;
+    left = 4;
 
 function translateX(x) {
   return "translate(" + (x + 0.5) + ",0)";
@@ -29,10 +28,6 @@ function center(scale) {
   };
 }
 
-function entering() {
-  return !this.__axis;
-}
-
 function axis(orient, scale) {
   var tickArguments = [],
       tickValues = null,
@@ -44,78 +39,39 @@ function axis(orient, scale) {
       x = orient === left || orient === right ? "x" : "y",
       transform = orient === top || orient === bottom ? translateX : translateY;
 
-  function axis(context) {
+  function axis() {
     var values = tickValues == null ? (scale.ticks ? scale.ticks.apply(scale, tickArguments) : scale.domain()) : tickValues,
         format = tickFormat == null ? (scale.tickFormat ? scale.tickFormat.apply(scale, tickArguments) : identity) : tickFormat,
         spacing = Math.max(tickSizeInner, 0) + tickPadding,
         range = scale.range(),
         range0 = +range[0] + 0.5,
         range1 = +range[range.length - 1] + 0.5,
-        position = (scale.bandwidth ? center : number)(scale.copy()),
-        selection = context.selection ? context.selection() : context,
-        path = selection.selectAll(".domain").data([null]),
-        tick = selection.selectAll(".tick").data(values, scale).order(),
-        tickExit = tick.exit(),
-        tickEnter = tick.enter().append("g").attr("class", "tick"),
-        line = tick.select("line"),
-        text = tick.select("text");
+        position = (scale.bandwidth ? center : number)(scale.copy());
 
-    path = path.merge(path.enter().insert("path", ".tick")
-        .attr("class", "domain")
-        .attr("stroke", "#000"));
+    var ticks = values.map(function(value) {
+      var line = {},
+          text = {
+            dy: orient === top ? "0em" : orient === bottom ? "0.71em" : "0.32em",
+            text: format(value)
+          };
+      line[x + "2"] = tickSizeInner;
+      text[x] = k * spacing;
 
-    tick = tick.merge(tickEnter);
-
-    line = line.merge(tickEnter.append("line")
-        .attr("stroke", "#000")
-        .attr(x + "2", k * tickSizeInner));
-
-    text = text.merge(tickEnter.append("text")
-        .attr("fill", "#000")
-        .attr(x, k * spacing)
-        .attr("dy", orient === top ? "0em" : orient === bottom ? "0.71em" : "0.32em"));
-
-    if (context !== selection) {
-      path = path.transition(context);
-      tick = tick.transition(context);
-      line = line.transition(context);
-      text = text.transition(context);
-
-      tickExit = tickExit.transition(context)
-          .attr("opacity", epsilon)
-          .attr("transform", function(d) { return isFinite(d = position(d)) ? transform(d) : this.getAttribute("transform"); });
-
-      tickEnter
-          .attr("opacity", epsilon)
-          .attr("transform", function(d) { var p = this.parentNode.__axis; return transform(p && isFinite(p = p(d)) ? p : position(d)); });
+      return {
+        transform: transform(position(value)),
+        line: line,
+        text: text
+      }
+    });
+    return {
+      anchor:  orient === right ? "start" : orient === left ? "end" : "middle",
+      path: {
+        d: orient === left || orient == right
+        ? "M" + k * tickSizeOuter + "," + range0 + "H0.5V" + range1 + "H" + k * tickSizeOuter
+        : "M" + range0 + "," + k * tickSizeOuter + "V0.5H" + range1 + "V" + k * tickSizeOuter
+      },
+      ticks: ticks
     }
-
-    tickExit.remove();
-
-    path
-        .attr("d", orient === left || orient == right
-            ? "M" + k * tickSizeOuter + "," + range0 + "H0.5V" + range1 + "H" + k * tickSizeOuter
-            : "M" + range0 + "," + k * tickSizeOuter + "V0.5H" + range1 + "V" + k * tickSizeOuter);
-
-    tick
-        .attr("opacity", 1)
-        .attr("transform", function(d) { return transform(position(d)); });
-
-    line
-        .attr(x + "2", k * tickSizeInner);
-
-    text
-        .attr(x, k * spacing)
-        .text(format);
-
-    selection.filter(entering)
-        .attr("fill", "none")
-        .attr("font-size", 10)
-        .attr("font-family", "sans-serif")
-        .attr("text-anchor", orient === right ? "start" : orient === left ? "end" : "middle");
-
-    selection
-        .each(function() { this.__axis = position; });
   }
 
   axis.scale = function(_) {
@@ -172,3 +128,5 @@ export function axisBottom(scale) {
 export function axisLeft(scale) {
   return axis(left, scale);
 }
+
+export { axis };

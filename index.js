@@ -1,4 +1,5 @@
 export {
+  axis,
   axisTop,
   axisRight,
   axisBottom,
