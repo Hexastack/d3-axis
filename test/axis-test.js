@@ -165,7 +165,8 @@ tape("axis(orientation, scale) 20 ticks produces the expected result", function(
 });
 
 tape("axisLeft.scale(nonNumericRangeScale)() produces the expected result", function(test) {
-  var axisExpected = { anchor: 'end',
+  var axisExpected = { 
+    anchor: 'end',
     path: { d: 'M-6,0.5H0.5V500.5H-6' },
     ticks: [
       { transform: 'translate(0,0.5)',
