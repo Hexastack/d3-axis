@@ -71,92 +71,92 @@ tape("axis.tickValues() makes a defensive copy of the tick values", function(tes
 
 tape("axis(orientation, scale) 20 ticks produces the expected result", function(test) {
   var axisExpected = {
-    anchor: 'middle',
-    path: { d: 'M0.5,6V0.5H1.5V6' },
-    ticks: [ 
+    anchor: 'end',
+    path: { d: 'M-6,0.5H0.5V1.5H-6' },
+    ticks: [
       { transform: 'translate(0,0.5)',
-        line: { y2: 6 },
-        text: { dy: '0.32em', text: '0.00', y: 9 }
+        line: { x2: -6 },
+        text: { dy: '0.32em', text: '0.00', x: -9 }
       },
       { transform: 'translate(0,0.55)',
-        line: { y2: 6 },
-        text: { dy: '0.32em', text: '0.05', y: 9 }
+        line: { x2: -6 },
+        text: { dy: '0.32em', text: '0.05', x: -9 }
       },
       { transform: 'translate(0,0.6)',
-        line: { y2: 6 },
-        text: { dy: '0.32em', text: '0.10', y: 9 }
+        line: { x2: -6 },
+        text: { dy: '0.32em', text: '0.10', x: -9 }
       },
       { transform: 'translate(0,0.65)',
-        line: { y2: 6 },
-        text: { dy: '0.32em', text: '0.15', y: 9 }
+        line: { x2: -6 },
+        text: { dy: '0.32em', text: '0.15', x: -9 }
       },
       { transform: 'translate(0,0.7)',
-        line: { y2: 6 },
-        text: { dy: '0.32em', text: '0.20', y: 9 }
+        line: { x2: -6 },
+        text: { dy: '0.32em', text: '0.20', x: -9 }
       },
       { transform: 'translate(0,0.75)',
-        line: { y2: 6 },
-        text: { dy: '0.32em', text: '0.25', y: 9 }
+        line: { x2: -6 },
+        text: { dy: '0.32em', text: '0.25', x: -9 }
       },
       { transform: 'translate(0,0.8)',
-        line: { y2: 6 },
-        text: { dy: '0.32em', text: '0.30', y: 9 }
+        line: { x2: -6 },
+        text: { dy: '0.32em', text: '0.30', x: -9 }
       },
       { transform: 'translate(0,0.85)',
-        line: { y2: 6 },
-        text: { dy: '0.32em', text: '0.35', y: 9 }
+        line: { x2: -6 },
+        text: { dy: '0.32em', text: '0.35', x: -9 }
       },
       { transform: 'translate(0,0.9)',
-        line: { y2: 6 },
-        text: { dy: '0.32em', text: '0.40', y: 9 }
+        line: { x2: -6 },
+        text: { dy: '0.32em', text: '0.40', x: -9 }
       },
       { transform: 'translate(0,0.95)',
-        line: { y2: 6 },
-        text: { dy: '0.32em', text: '0.45', y: 9 }
+        line: { x2: -6 },
+        text: { dy: '0.32em', text: '0.45', x: -9 }
       },
       { transform: 'translate(0,1)',
-        line: { y2: 6 },
-        text: { dy: '0.32em', text: '0.50', y: 9 }
+        line: { x2: -6 },
+        text: { dy: '0.32em', text: '0.50', x: -9 }
       },
       { transform: 'translate(0,1.05)',
-        line: { y2: 6 },
-        text: { dy: '0.32em', text: '0.55', y: 9 }
+        line: { x2: -6 },
+        text: { dy: '0.32em', text: '0.55', x: -9 }
       },
       { transform: 'translate(0,1.1)',
-        line: { y2: 6 },
-        text: { dy: '0.32em', text: '0.60', y: 9 }
+        line: { x2: -6 },
+        text: { dy: '0.32em', text: '0.60', x: -9 }
       },
       { transform: 'translate(0,1.15)',
-        line: { y2: 6 },
-        text: { dy: '0.32em', text: '0.65', y: 9 }
+        line: { x2: -6 },
+        text: { dy: '0.32em', text: '0.65', x: -9 }
       },
       { transform: 'translate(0,1.2)',
-        line: { y2: 6 },
-        text: { dy: '0.32em', text: '0.70', y: 9 }
+        line: { x2: -6 },
+        text: { dy: '0.32em', text: '0.70', x: -9 }
       },
       { transform: 'translate(0,1.25)',
-        line: { y2: 6 },
-        text: { dy: '0.32em', text: '0.75', y: 9 }
+        line: { x2: -6 },
+        text: { dy: '0.32em', text: '0.75', x: -9 }
       },
       { transform: 'translate(0,1.3)',
-        line: { y2: 6 },
-        text: { dy: '0.32em', text: '0.80', y: 9 }
+        line: { x2: -6 },
+        text: { dy: '0.32em', text: '0.80', x: -9 }
       },
       { transform: 'translate(0,1.35)',
-        line: { y2: 6 },
-        text: { dy: '0.32em', text: '0.85', y: 9 }
+        line: { x2: -6 },
+        text: { dy: '0.32em', text: '0.85', x: -9 }
       },
       { transform: 'translate(0,1.4)',
-        line: { y2: 6 },
-        text: { dy: '0.32em', text: '0.90', y: 9 }
+        line: { x2: -6 },
+        text: { dy: '0.32em', text: '0.90', x: -9 }
       },
       { transform: 'translate(0,1.45)',
-        line: { y2: 6 },
-        text: { dy: '0.32em', text: '0.95', y: 9 }
+        line: { x2: -6 },
+        text: { dy: '0.32em', text: '0.95', x: -9 }
       },
       { transform: 'translate(0,1.5)',
-        line: { y2: 6 },
-        text: { dy: '0.32em', text: '1.00', y: 9 }
+        line: { x2: -6 },
+        text: { dy: '0.32em', text: '1.00', x: -9 }
       }
     ]
   }
@@ -164,57 +164,57 @@ tape("axis(orientation, scale) 20 ticks produces the expected result", function(
   test.end();
 });
 
-tape("axisLeft.scale(nonNumericRangeScale)() produces the expected result", function(test) {
+tape("axisRight.scale(nonNumericRangeScale)() produces the expected result", function(test) {
   var axisExpected = { 
-    anchor: 'end',
-    path: { d: 'M-6,0.5H0.5V500.5H-6' },
+    anchor: 'start',
+    path: { d: 'M6,0.5H0.5V500.5H6' },
     ticks: [
       { transform: 'translate(0,0.5)',
         line: { x2: 6 },
-        text: { dy: '0.32em', text: '0.0', x: -9 }
+        text: { dy: '0.32em', text: '0.0', x: 9 }
       },
       { transform: 'translate(0,50.5)',
         line: { x2: 6 },
-        text: { dy: '0.32em', text: '0.1', x: -9 }
+        text: { dy: '0.32em', text: '0.1', x: 9 }
       },
       { transform: 'translate(0,100.5)',
         line: { x2: 6 },
-        text: { dy: '0.32em', text: '0.2', x: -9 }
+        text: { dy: '0.32em', text: '0.2', x: 9 }
       },
       { transform: 'translate(0,150.5)',
         line: { x2: 6 },
-        text: { dy: '0.32em', text: '0.3', x: -9 }
+        text: { dy: '0.32em', text: '0.3', x: 9 }
       },
       { transform: 'translate(0,200.5)',
         line: { x2: 6 },
-        text: { dy: '0.32em', text: '0.4', x: -9 }
+        text: { dy: '0.32em', text: '0.4', x: 9 }
       },
       { transform: 'translate(0,250.5)',
         line: { x2: 6 },
-        text: { dy: '0.32em', text: '0.5', x: -9 }
+        text: { dy: '0.32em', text: '0.5', x: 9 }
       },
       { transform: 'translate(0,300.5)',
         line: { x2: 6 },
-        text: { dy: '0.32em', text: '0.6', x: -9 }
+        text: { dy: '0.32em', text: '0.6', x: 9 }
       },
       { transform: 'translate(0,350.5)',
         line: { x2: 6 },
-        text: { dy: '0.32em', text: '0.7', x: -9 }
+        text: { dy: '0.32em', text: '0.7', x: 9 }
       },
       { transform: 'translate(0,400.5)',
         line: { x2: 6 },
-        text: { dy: '0.32em', text: '0.8', x: -9 }
+        text: { dy: '0.32em', text: '0.8', x: 9 }
       },
       { transform: 'translate(0,450.5)',
         line: { x2: 6 },
-        text: { dy: '0.32em', text: '0.9', x: -9 }
+        text: { dy: '0.32em', text: '0.9', x: 9 }
       },
       { transform: 'translate(0,500.5)',
         line: { x2: 6 },
-        text: { dy: '0.32em', text: '1.0', x: -9 }
+        text: { dy: '0.32em', text: '1.0', x: 9 }
       }
     ]
   }
-  test.deepEqual(d3.axisLeft(d3.scaleLinear().range([0, "500"]))(), axisExpected);
+  test.deepEqual(d3.axisRight(d3.scaleLinear().range([0, "500"]))(), axisExpected);
   test.end();
 });

@@ -4,7 +4,8 @@ import identity from "./identity";
 var top = 1,
     right = 2,
     bottom = 3,
-    left = 4;
+    left = 4,
+    orientations = [null, 'top', 'right', 'bottom', 'left'];
 
 function translateX(x) {
   return "translate(" + (x + 0.5) + ",0)";
@@ -29,6 +30,10 @@ function center(scale) {
 }
 
 function axis(orient, scale) {
+  if (!(orient in [1,2,3,4]))
+    orient = orientations.indexOf(orient)
+  if (!(orient in [1,2,3,4]))
+    orient = 4
   var tickArguments = [],
       tickValues = null,
       tickFormat = null,
@@ -54,7 +59,7 @@ function axis(orient, scale) {
             dy: orient === top ? "0em" : orient === bottom ? "0.71em" : "0.32em",
             text: format(value)
           };
-      line[x + "2"] = tickSizeInner;
+      line[x + "2"] = orient === left ? -tickSizeInner : tickSizeInner;
       text[x] = k * spacing;
 
       return {
