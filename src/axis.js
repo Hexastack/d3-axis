@@ -59,7 +59,7 @@ function axis(orient, scale) {
             dy: orient === top ? "0em" : orient === bottom ? "0.71em" : "0.32em",
             text: format(value)
           };
-      line[x + "2"] = orient === left ? -tickSizeInner : tickSizeInner;
+      line[x + "2"] = k * tickSizeInner;
       text[x] = k * spacing;
 
       return {
