@@ -1,6 +1,6 @@
 {
   "name": "d3-axis-norender",
-  "version": "1.0.8-r2",
+  "version": "1.0.8-r3",
   "description": "Return axis object for scales.",
   "keywords": [
     "d3",
