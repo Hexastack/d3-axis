@@ -8,11 +8,11 @@ var top = 1,
     orientations = [null, 'top', 'right', 'bottom', 'left'];
 
 function translateX(x) {
-  return "translate(" + (x + 0.5) + ",0)";
+  return {x: x + 0.5, y: 0};
 }
 
 function translateY(y) {
-  return "translate(0," + (y + 0.5) + ")";
+  return {x: 0, y: y + 0.5};
 }
 
 function number(scale) {
@@ -56,7 +56,7 @@ function axis(orient, scale) {
     var ticks = values.map(function(value) {
       var line = {},
           text = {
-            dy: orient === top ? "0em" : orient === bottom ? "0.71em" : "0.32em",
+            dy: orient === top ? 0 : orient === bottom ? 0.71 : 0.32,
             text: format(value)
           };
       line[x + "2"] = k * tickSizeInner;
