@@ -71,9 +71,9 @@ function axis(orient, scale) {
     return {
       anchor:  orient === right ? "start" : orient === left ? "end" : "middle",
       path: {
-        d: orient === left || orient == right
-        ? "M" + k * tickSizeOuter + "," + range0 + "H0.5V" + range1 + "H" + k * tickSizeOuter
-        : "M" + range0 + "," + k * tickSizeOuter + "V0.5H" + range1 + "V" + k * tickSizeOuter
+        tick: k * tickSizeOuter,
+        range0: range0,
+        range1: range1
       },
       ticks: ticks
     }

@@ -72,7 +72,7 @@ tape("axis.tickValues() makes a defensive copy of the tick values", function(tes
 tape("axis(orientation, scale) 20 ticks produces the expected result", function(test) {
   var axisExpected = {
     anchor: 'end',
-    path: { d: 'M-6,0.5H0.5V1.5H-6' },
+    path: { tick: -6, range0: 0.5, range1: 1.5 },
     ticks: [
       { transform: 'translate(0,0.5)',
         line: { x2: -6 },
@@ -167,7 +167,7 @@ tape("axis(orientation, scale) 20 ticks produces the expected result", function(
 tape("axisRight.scale(nonNumericRangeScale)() produces the expected result", function(test) {
   var axisExpected = { 
     anchor: 'start',
-    path: { d: 'M6,0.5H0.5V500.5H6' },
+    path: { tick: 6, range0: 0.5, range1: 500.5 },
     ticks: [
       { transform: 'translate(0,0.5)',
         line: { x2: 6 },
